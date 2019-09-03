@@ -1,4 +1,3 @@
-
 module ExactCover
   # Transforms an array into a linked list of data and column objects
   class MatrixPreprocessor
@@ -62,15 +61,15 @@ module ExactCover
 
       # Fill the up and down fields
       col_objects_array.each do |col_objects|
-         prev = col_objects[-1]
-         loop do
-           break if col_objects.empty?
+        prev = col_objects[-1]
+        loop do
+          break if col_objects.empty?
 
-           current = col_objects.shift
-           current.up = prev
-           prev.down = current
-           prev = current
-         end
+          current = col_objects.shift
+          current.up = prev
+          prev.down = current
+          prev = current
+        end
       end
 
       # insert the root between headers[-1] and headers[0]

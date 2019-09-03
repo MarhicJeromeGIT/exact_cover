@@ -3,10 +3,8 @@
 # Can be used to solve tetramino or sudoku problems
 # @author Marhic Jerome 2019
 
-# require "matrix_preprocessor"
-
-# Solves the cover problem with algorithm "X"
 module ExactCover
+  # Solves the cover problem with algorithm "X"
   class CoverSolver
     class InvalidMatrixSize < StandardError; end
 

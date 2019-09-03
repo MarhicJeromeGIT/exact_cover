@@ -1,4 +1,3 @@
-
 module ExactCover
   # represents a "1" in the given matrix
   class DataObject

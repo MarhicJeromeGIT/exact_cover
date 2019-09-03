@@ -27,6 +27,22 @@ module ExactCover
           expect(root.name).to eq "root"
         end
 
+        it "fills the columns size" do
+          root = subject.call
+          col1 = root.right
+          expect(col1.size).to eq 2
+          col7 = root.left
+          expect(col7.size).to eq 3
+        end
+
+        it "fills the columns name" do
+          root = subject.call
+          col1 = root.right
+          expect(col1.name).to eq "0"
+          col7 = root.left
+          expect(col7.name).to eq "6"
+        end
+
         it "links the root to the column headers" do
           root = subject.call
           expect(root.right).to be_a ColumnObject
