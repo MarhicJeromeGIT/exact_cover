@@ -22,7 +22,47 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Basic usage
+```
+require "exact_cover"
+
+matrix =
+  [
+    [0, 0, 1, 0, 1, 1, 0],
+    [1, 0, 0, 1, 0, 0, 1],
+    [0, 1, 1, 0, 0, 1, 0],
+    [1, 0, 0, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 1],
+    [0, 0, 0, 1, 1, 0, 1]
+  ]
+
+solutions = ExactCover::CoverSolver.new(matrix).call
+solutions.count
+# => 1
+solutions.first
+# => [[1, 0, 0, 1, 0, 0, 0], [0, 1, 0, 0, 0, 0, 1], [0, 0, 1, 0, 1, 1, 0]]
+# this corresponds to the 4th, 3rd and first rows of the given matrix
+```
+
+You can iterate through all the solutions
+```
+require "exact_cover"
+
+matrix =
+  [
+    [1, 1],
+    [0, 1],
+    [1, 0]
+  ]
+
+solutions = ExactCover::CoverSolver.new(matrix).call
+solutions.count
+# => 2
+solutions.next
+# => [[1, 1]]
+solutions.next
+# => [[1, 0], [0, 1]]
+```
 
 ## Development
 

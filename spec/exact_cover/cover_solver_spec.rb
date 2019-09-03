@@ -78,6 +78,26 @@ RSpec.describe ExactCover::CoverSolver do
           ]
         )
       end
+
+      context "when the rows are reversed" do
+        let(:matrix) do
+          [
+            [0, 1],
+            [1, 0],
+            [1, 1]
+          ]
+        end
+
+        it "enumerates all the solutions" do
+          solutions = subject.call
+          expect(solutions.to_a).to eq(
+            [
+              [[1, 1]],
+              [[1, 0], [0, 1]]
+            ]
+          )
+        end
+      end
     end
 
     context "when there is no solution" do
