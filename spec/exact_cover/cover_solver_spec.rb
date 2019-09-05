@@ -1,3 +1,4 @@
+require "byebug"
 
 RSpec.describe ExactCover::CoverSolver do
   subject { described_class.new(matrix) }
@@ -92,8 +93,8 @@ RSpec.describe ExactCover::CoverSolver do
           solutions = subject.call
           expect(solutions.to_a).to eq(
             [
+              [[1, 0], [0, 1]],
               [[1, 1]],
-              [[1, 0], [0, 1]]
             ]
           )
         end

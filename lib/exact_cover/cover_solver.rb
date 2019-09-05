@@ -59,10 +59,7 @@ module ExactCover
           j = j.right
         end
 
-        search(k + 1, root, y, solution)
-
-        r = solution[k]
-        column = r.column
+        search(k + 1, root, y, solution.dup)
 
         j = r.left
         loop do
