@@ -1,7 +1,7 @@
 module ExactCover
   # a column header
   class ColumnObject < DataObject
-    attr_reader :size # size (number of 1 in the column)
+    attr_accessor :size # size (number of 1 in the column)
     attr_reader :name # name
 
     def initialize(size, name)

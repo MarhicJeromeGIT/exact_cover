@@ -95,7 +95,23 @@ module ExactCover
     end
 
     def choose_column(root)
-      root.right
+      # Minimize the branching factor by choosing the column with the lowest size
+      min_size = root.right.size
+      min_size_column = root.right
+
+      current_column = min_size_column.right
+      loop do
+        break if current_column == root
+
+        if current_column.size < min_size
+          min_size = current_column.size
+          min_size_column = current_column
+        end
+
+        current_column = current_column.right
+      end
+
+      min_size_column
     end
 
     # removes c from the header list
@@ -114,6 +130,7 @@ module ExactCover
 
           j.down.up = j.up
           j.up.down = j.down
+          j.column.size -= 1
 
           j = j.right
         end
@@ -131,6 +148,7 @@ module ExactCover
         loop do
           break if j == i
 
+          j.column.size += 1
           j.down.up = j
           j.up.down = j
 

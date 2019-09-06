@@ -1,8 +1,9 @@
 # ExactCover
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/exact_cover`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem is a ruby implementation of D.Knuth's paper "Dancing Link" : https://arxiv.org/abs/cs/0011047
+It implements a solver for the "exact cover of a matrix" problem. For a given matrix of 0s and 1s, it finds a set of
+rows that contains exactly one "1" in each column.
+This can be used to implement a tetramino or a sudoku solver.
 
 ## Installation
 
