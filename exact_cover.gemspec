@@ -4,20 +4,20 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "exact_cover/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "exact_cover"
+  spec.name          = "exact_matrix_cover"
   spec.version       = ExactCover::VERSION
   spec.authors       = ["Jerome Marhic"]
   spec.email         = ["jerome.marhic@effilab.com"]
 
   spec.summary       = "Find the set of rows that correspond to an exact cover for a given matrix."
   spec.description   = "Implementation of D.Knuth 'dancing links' algorithm to solve the exact cover problem."
-  spec.homepage      = "https://github.com/MarhicJeromeGIT/DancingLinks"
+  spec.homepage      = "https://github.com/MarhicJeromeGIT/exact_cover"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata["allowed_push_host"] = "https://rubygems.org/"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
