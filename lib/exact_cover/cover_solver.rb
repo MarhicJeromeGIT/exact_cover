@@ -7,11 +7,14 @@ module ExactCover
   # Solves the cover problem with algorithm "X"
   class CoverSolver
     class InvalidMatrixSize < StandardError; end
+    class TimeLimitReached < StandardError; end
 
     attr_reader :matrix
     attr_reader :column_count
+    attr_reader :time_limit
+    attr_reader :start_time
 
-    def initialize(matrix)
+    def initialize(matrix, time_limit: nil)
       @matrix = matrix
       # sanity check
       if !matrix.is_a?(Array) || matrix.size == 0 || matrix[0].size == 0
@@ -19,6 +22,7 @@ module ExactCover
       end
 
       @column_count = matrix[0].size
+      @time_limit = time_limit
     end
 
     # Solve the exact cover problem for the given matrix
@@ -26,6 +30,7 @@ module ExactCover
     def call
       root = MatrixPreprocessor.new(matrix).call
       Enumerator.new do |y|
+        @start_time = Time.now
         search(0, root, y)
       end
     end
@@ -37,6 +42,10 @@ module ExactCover
     # @param y [Yielder] enumerator yielder
     # @param solution [Array<DataObject>] current solution
     def search(k, root, y, solution = [])
+      if time_limit && start_time + time_limit < Time.now
+        raise TimeLimitReached, "Ran for more than #{time_limit} seconds"
+      end
+
       if root.right == root
         y.yield format_solution(solution)
         return

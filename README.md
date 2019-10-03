@@ -10,7 +10,7 @@ This can be used to implement a tetramino or a sudoku solver.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'exact_cover'
+gem 'exact_matrix_cover'
 ```
 
 And then execute:
@@ -19,7 +19,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install exact_cover
+    $ gem install exact_matrix_cover
 
 ## Usage
 
@@ -42,7 +42,7 @@ solutions.count
 # => 1
 solutions.first
 # => [[1, 0, 0, 1, 0, 0, 0], [0, 1, 0, 0, 0, 0, 1], [0, 0, 1, 0, 1, 1, 0]]
-# this corresponds to the 4th, 3rd and first rows of the given matrix
+# this corresponds to the 4th, 5th and first rows of the given matrix
 ```
 
 You can iterate through all the solutions
@@ -63,6 +63,17 @@ solutions.next
 # => [[1, 1]]
 solutions.next
 # => [[1, 0], [0, 1]]
+```
+
+You can also pass a time limit to the cover solver. It will stop searching the solution space
+and raise a TimeLimitReached exception after the time limit has elapsed.
+
+# Raises an exception after 10 seconds
+```
+begin
+  solutions = ExactCover::CoverSolver.new(matrix, 10).call
+rescue ExactCover::CoverSolver::TimeLimitReached
+end
 ```
 
 ## Development
