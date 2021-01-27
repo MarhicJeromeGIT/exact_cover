@@ -2,12 +2,18 @@ PATH
   remote: .
   specs:
     exact_matrix_cover (0.2.0)
+      nmatrix
 
 GEM
   remote: https://rubygems.org/
   specs:
+    backports (3.18.2)
     byebug (11.0.1)
     diff-lcs (1.3)
+    nmatrix (0.2.4)
+      packable (~> 1.3, >= 1.3.5)
+    packable (1.3.14)
+      backports
     rake (10.5.0)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
@@ -34,4 +40,4 @@ DEPENDENCIES
   rspec (~> 3.0)
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
